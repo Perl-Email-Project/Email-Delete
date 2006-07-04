@@ -1,0 +1,16 @@
+# http://module-build.sourceforge.net/META-spec.html
+#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
+name:         Email-Delete
+version:      1.02
+version_from: lib/Email/Delete.pm
+installdirs:  site
+requires:
+    Email::Folder:                 0.84
+    Email::FolderType:             0.7
+    Email::LocalDelivery:          0.09
+    Email::Simple:                 1.92
+    File::Find::Rule:              0.28
+    Test::More:                    0.47
+
+distribution_type: module
+generated_by: ExtUtils::MakeMaker version 6.24
