@@ -1,8 +1,10 @@
-1.02    2004-12-17
+1.021   2006-11-13
+        fix documentation bug
+        improve packaging
 
-  - Bug in Email::Delete::Mbox did not allow complete deletion of
-    all messages.
+1.02    2004-12-17
+        Bug in Email::Delete::Mbox did not allow complete deletion of
+        all messages.
 
 1.01    2004-12-17
-
-  - Initial release.
+        Initial release.
