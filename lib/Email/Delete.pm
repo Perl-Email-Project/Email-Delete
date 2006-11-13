@@ -22,22 +22,6 @@ $VERSION = '1.021';
 
 use Email::FolderType qw[folder_type];
 
-sub delete_message {
-    my %args = @_;
-    my $with = $args{with};
-    unless ( $with ) {
-        my $type = folder_type $args{from};
-        $with = __PACKAGE__ . "::$type";
-    }
-
-    eval "use $with"; die if $@;
-
-    $with->can('delete_message')->(%args);
-}
-
-1;
-
-__END__
 =head1 SYNOPSIS
 
   use Email::Delete qw[delete_message];
@@ -80,6 +64,23 @@ C<die> from your code reference. A proper deleting package will
 not delete mail until all the messages have been scanned. So
 if you throw an exception, your mail will be preserved and scanning
 will be aborted.
+
+=cut
+
+sub delete_message {
+    my %args = @_;
+    my $with = $args{with};
+    unless ( $with ) {
+        my $type = folder_type $args{from};
+        $with = __PACKAGE__ . "::$type";
+    }
+
+    eval "use $with"; die if $@;
+
+    $with->can('delete_message')->(%args);
+}
+
+1;
 
 =head1 SEE ALSO
 
