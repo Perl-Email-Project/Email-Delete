@@ -4,6 +4,7 @@ WriteMakefile (
                AUTHOR        => 'Casey West <casey@geeknest.com>',
                ABSTRACT      => "Delete Messages from Folders",
                NAME          => 'Email::Delete',
+               LICENSE       => 'perl',
                PREREQ_PM     => {
                                  'Email::Folder' => '0.84',
                                  'Email::FolderType' => '0.7',

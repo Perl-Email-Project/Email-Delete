@@ -2,8 +2,11 @@ Changes
 lib/Email/Delete.pm
 lib/Email/Delete/Maildir.pm
 lib/Email/Delete/Mbox.pm
+LICENSE
 Makefile.PL
 MANIFEST			This list of files
 META.yml
 README
+t/pod-coverage.t
+t/pod.t
 t/test_delete.t
