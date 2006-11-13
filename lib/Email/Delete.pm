@@ -1,12 +1,24 @@
 package Email::Delete;
-# $Id: Delete.pm,v 1.2 2004/12/17 18:45:50 cwest Exp $
 use strict;
+## no critic RequireUseWarnings
+
+=head1 NAME
+
+Email::Delete - Delete Messages from Folders
+
+=head1 VERSION
+
+version 1.021
+
+  $Id: Delete.pm,v 1.2 2004/12/17 18:45:50 cwest Exp $
+
+=cut
 
 use base qw[Exporter];
 use vars qw[@EXPORT_OK $VERSION];
 
 @EXPORT_OK = qw[delete_message];
-$VERSION = '1.02';
+$VERSION = '1.021';
 
 use Email::FolderType qw[folder_type];
 
@@ -20,29 +32,23 @@ sub delete_message {
 
     eval "use $with"; die if $@;
 
-    no strict 'refs';
-    &{"$with\::delete_message"}(%args);
+    $with->can('delete_message')->(%args);
 }
 
 1;
 
 __END__
-
-=head1 NAME
-
-Email::Delete - Delete Messages from Folders
-
 =head1 SYNOPSIS
 
   use Email::Delete qw[delete_message];
   
   my $message_id = shift @ARGV;
   
-  delete_messages from     => $ENV{MAIL},
-                  matching => sub {
-                      my $message = shift;
-                      $message->header('Message-ID') =~ $message_id;
-                  };
+  delete_message from     => $ENV{MAIL},
+                 matching => sub {
+                   my $message = shift;
+                   $message->header('Message-ID') =~ $message_id;
+                 };
 
 =head1 DESCRIPTION
 
