@@ -1,3 +1,6 @@
+1.022   2007-02-15
+        update prereqs to avoid test-breaking E::LocalDelivery 0.211, 0.212
+
 1.021   2006-11-13
         fix documentation bug
         improve packaging

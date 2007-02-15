@@ -8,7 +8,7 @@ WriteMakefile (
     PREREQ_PM     => {
       'Email::Folder'        => '0.84',
       'Email::FolderType'    => '0.7',
-      'Email::LocalDelivery' => '0.09',
+      'Email::LocalDelivery' => '0.213', # avoid 0.21[12], mangle tests
       'Email::Simple'        => '1.92',
       'File::Find::Rule'     => '0.28',
       'Test::More'           => '0.47',

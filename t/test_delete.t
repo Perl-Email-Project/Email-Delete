@@ -51,5 +51,5 @@ __MAIL__
 
 sub unseed_mail {
     my @boxes = @_;
-    rmtree 't/Mail';
+    # rmtree 't/Mail';
 }
