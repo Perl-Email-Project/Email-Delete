@@ -3,26 +3,26 @@ package Email::Delete::Maildir;
 use strict;
 
 use vars qw[$VERSION];
-$VERSION = sprintf "%d.%02d", split m/\./, (qw$Revision: 1.1 $)[1];
+$VERSION = '2.001';
 
-use File::Find::Rule;
 use Email::Simple;
 
 sub delete_message {
     my %args = @_;
     
-    my @files = File::Find::Rule->file
-                                ->grep(sub {
-                                            local $_ = shift;
-                                            local *MSG;
-                                            open MSG, $_ or return;
-                                            my $msg = Email::Simple->new(do{
-                                               local $/; <MSG>;
-                                            });
-                                            close MSG;
-                                            $args{matching}->($msg);
-                                          })
-                                ->in($args{from});
+    my @files;
+# Whatever in F<tmp/> is undelivered yet, right?
+    foreach my $sect ( qw( new cur ) ) {
+# What if C<$args{from}> is something but directory?  Never mind, just skip it.
+        opendir my($dh), "$args{from}/$sect" or next;
+        while(my $mail = readdir $dh) {
+# Faild to open subfolder?  Here?  Immaterial, go away.
+            -f "$args{from}/$sect/$mail"                          or next;
+            open my $fh, '<', "$args{from}/$sect/$mail"           or next;
+            my $msg = Email::Simple->new(do { local $/; <$fh>; }) or next;
+            $args{matching}->($msg) and push @files, "$args{from}/$sect/$mail";
+        };
+    };
     return unlink @files;
 }
 
