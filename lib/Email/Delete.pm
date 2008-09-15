@@ -8,7 +8,7 @@ Email::Delete - Delete Messages from Folders
 
 =head1 VERSION
 
-version 1.022
+version 2.001
 
   $Id: Delete.pm,v 1.2 2004/12/17 18:45:50 cwest Exp $
 
@@ -18,7 +18,7 @@ use base qw[Exporter];
 use vars qw[@EXPORT_OK $VERSION];
 
 @EXPORT_OK = qw[delete_message];
-$VERSION = '1.022';
+$VERSION = '2.001';
 
 use Email::FolderType qw[folder_type];
 

@@ -15,7 +15,7 @@ package Email::Delete::Mbox;
 use base qw[Email::Folder::Mbox];
 
 use vars qw[$VERSION];
-$VERSION = sprintf "%d.%02d", split m/\./, (qw$Revision: 1.3 $)[1];
+$VERSION = '2.001';
 
 use Email::Folder;
 use IO::File;
